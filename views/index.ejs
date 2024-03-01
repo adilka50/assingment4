@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Version</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hero-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 40px;
+        }
+        .articles {
+            padding: 20px;
+        }
+        .articles__heading {
+            margin-bottom: 30px;
+        }
+        .article-ul {
+            list-style: none;
+            padding: 0;
+        }
+        .article-ul li {
+            margin-bottom: 10px;
+        }
+        .article-list__date {
+            display: block;
+            color: #6c757d;
+        }
+        .pagination {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://astanait.edu.kz/wp-content/uploads/2020/05/aitu-logo-white-2-300x154.png" alt="LandScape" class="hero-image img-fluid">
+
+    <section class="articles text-center">
+
+        <h2 class="articles__heading">Latest Posts</h2>
+        <ul class="article-ul">
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/post/<%= post._id %>" class="text-dark">
+                        <span><%= post.title %></span>
+                        <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+
+        <% if (nextPage !== null) { %>
+            <a href="/?page=<%= nextPage %>" class="pagination">View Older Posts &gt;</a>
+        <% } %>
+    </section>
+</div>
+
+<!-- Подключение Bootstrap JS и зависимостей -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
